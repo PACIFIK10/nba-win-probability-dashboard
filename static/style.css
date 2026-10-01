@@ -19,6 +19,22 @@ body {
   padding: 24px 16px 60px;
   max-width: 720px;
   margin-inline: auto;
+  position: relative;
+}
+
+.bg-logos {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  pointer-events: none;
+}
+.bg-logo {
+  flex: 1 1 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: min(90%, 840px);
+  opacity: 0.10;
+  transition: background-image 0.3s ease;
 }
 
 header h1 { margin: 0 0 4px; font-size: 1.5rem; }
