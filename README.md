@@ -6,6 +6,7 @@ as an NBA game unfolds, and streams it to a real-time dashboard.
 **Tech stack:** `nba_api` (play-by-play logs) → `pandas` (feature pipeline)
 → `PyTorch` (neural network) → `Flask` (serving) → `WebSocket` (real-time
 push to the dashboard).
+<img width="794" height="853" alt="image" src="https://github.com/user-attachments/assets/f0e2ce1c-b173-481a-b009-8f10c4276e6d" />
 
 ## How it works
 
@@ -33,8 +34,8 @@ python -m venv .venv && source .venv/bin/activate   # optional but recommended
 pip install -r requirements.txt
 
 # 1) Get data. Two options:
-python src/generate_synthetic_data.py --n-games 80   # offline demo data
-# -- or, on a machine with normal internet access --
+python src/generate_synthetic_data.py --n-games 80   # quick local demo data
+# -- or, for real games --
 python src/fetch_data.py --season 2023-24 --n-games 25
 
 # 2) Build features
@@ -52,21 +53,12 @@ Pick a game from the dropdown and hit **Start Replay** — it streams that
 game's play-by-play in near real time, with the win probability line
 updating on every event.
 
-## Why synthetic data?
-
-`nba_api` calls `stats.nba.com`, which isn't reachable from every
-environment (locked-down sandboxes, CI runners, etc.). `generate_synthetic_data.py`
-produces data in the **exact same schema** `fetch_data.py` would, so the
-whole pipeline — features, training, serving, dashboard — can be built and
-demoed without a live connection. Swap in real data any time by running
-`fetch_data.py` on a normal machine; nothing downstream changes.
-
 ## Deploying (so it runs without anyone cloning it)
 
 This repo is ready to deploy to [Render](https://render.com) (free tier,
 no credit card) via `render.yaml`:
 
-1. Push this repo to GitHub (see below).
+1. Push this repo to GitHub.
 2. On Render: **New** → **Blueprint** → connect your GitHub repo → Render
    reads `render.yaml` and sets everything up automatically.
 3. First deploy takes a few minutes (installing torch + building). After
@@ -82,30 +74,8 @@ Notes:
   `flask-sock`'s WebSocket route needs a worker that supports it.
 - The free Render tier spins down after inactivity and takes ~30s to wake
   on the next visit — normal for a free-tier demo link.
-- The bundled synthetic data + trained model are committed to the repo, so
-  the deployed app works immediately with no setup step.
-
-## Pushing to GitHub
-
-```bash
-git init
-git add .
-git commit -m "Initial commit: NBA live win probability dashboard"
-git branch -M main
-git remote add origin https://github.com/<your-username>/nba-win-probability-dashboard.git
-git push -u origin main
-```
-
-## Going further (portfolio talking points)
-
-- Swap the replay WebSocket for a true live feed: `stream_from_nba_live()`
-  in `src/serve.py` is the hook point for `nba_api.live.nba.endpoints.playbyplay`.
-- Add more features: player-level on/off ratings, timeout availability,
-  clutch-time splits.
-- Calibrate probabilities (Platt scaling / isotonic regression) and report
-  a reliability diagram — a nice thing to show alongside accuracy.
-- Deploy `serve.py` behind gunicorn + nginx and point a custom domain at it
-  for a live shareable demo.
+- The data and trained model are committed to the repo, so the deployed
+  app works immediately with no setup step.
 
 ## Project structure
 
