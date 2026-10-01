@@ -1,6 +1,6 @@
 # NBA Live Win Probability Dashboard
 
-Built a full-stack machine learning app that predicts a live win probability for NBA games as they happen. A PyTorch neural network, trained on real play-by-play data (score differential, time remaining, possession, and fouls) from the NBA's official API, serves predictions through a Flask backend. A WebSocket connection pushes updated probabilities to a React-style dashboard in real time, so the win percentage shifts with every shot, foul, and turnover — just like the live odds you'd see on a sports broadcast.
+Built a full-stack machine learning app that predicts a live win probability for NBA games as they happen. A PyTorch neural network, trained on real play-by-play data (score differential, time remaining, possession, and fouls) from the NBA's official API, serves predictions through a Flask backend. A WebSocket connection pushes updated probabilities to a React-style dashboard in real time, so the win percentage shifts with every shot, foul, and turnover, just like the live odds you'd see on a sports broadcast.
 
 **Tech stack:** `nba_api` (play-by-play logs) → `pandas` (feature pipeline)
 → `PyTorch` (neural network) → `Flask` (serving) → `WebSocket` (real-time
