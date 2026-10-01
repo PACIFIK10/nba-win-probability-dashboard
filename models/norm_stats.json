@@ -1,0 +1,42 @@
+{
+  "feature_columns": [
+    "score_diff",
+    "seconds_remaining",
+    "possession_home",
+    "home_fouls",
+    "away_fouls",
+    "home_bonus",
+    "away_bonus"
+  ],
+  "stats": {
+    "score_diff": {
+      "mean": -0.7573865127263185,
+      "std": 13.045767668057374
+    },
+    "seconds_remaining": {
+      "mean": 1426.0513775911834,
+      "std": 832.7971585631589
+    },
+    "possession_home": {
+      "mean": 0.4993964838625033,
+      "std": 0.500012756191033
+    },
+    "home_fouls": {
+      "mean": 4.922067698766728,
+      "std": 3.315970168364357
+    },
+    "away_fouls": {
+      "mean": 4.588559433219627,
+      "std": 3.3404674658713365
+    },
+    "home_bonus": {
+      "mean": 0.5087378640776699,
+      "std": 0.4999367623299079
+    },
+    "away_bonus": {
+      "mean": 0.48559433219627396,
+      "std": 0.49980554863707083
+    }
+  },
+  "hidden": 32
+}

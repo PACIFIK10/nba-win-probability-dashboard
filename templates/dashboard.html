@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NBA Live Win Probability</title>
+<link rel="stylesheet" href="/static/style.css" />
+<script src="/static/chart.umd.js"></script>
+</head>
+<body>
+  <header>
+    <h1>🏀 Live Win Probability</h1>
+    <p class="subtitle">nba_api &rarr; pandas &rarr; PyTorch &rarr; Flask &rarr; WebSocket</p>
+  </header>
+
+  <section class="controls">
+    <label for="game-select">Game</label>
+    <select id="game-select"></select>
+    <button id="start-btn">▶ Start Replay</button>
+    <span id="status-pill" class="pill">idle</span>
+  </section>
+
+  <section class="scoreboard">
+    <div class="team home">
+      <div class="team-label" id="home-label">HOME</div>
+      <div class="prob" id="home-prob">50%</div>
+    </div>
+    <div class="mid">
+      <div class="clock" id="clock">12:00 · Q1</div>
+      <div class="score-diff" id="score-diff">0</div>
+      <div class="possession" id="possession">—</div>
+    </div>
+    <div class="team away">
+      <div class="team-label" id="away-label">AWAY</div>
+      <div class="prob" id="away-prob">50%</div>
+    </div>
+  </section>
+
+  <section class="chart-wrap">
+    <canvas id="prob-chart" height="90"></canvas>
+  </section>
+
+  <section class="fouls">
+    <div>Home fouls: <span id="home-fouls">0</span> <span id="home-bonus" class="bonus-tag"></span></div>
+    <div>Away fouls: <span id="away-fouls">0</span> <span id="away-bonus" class="bonus-tag"></span></div>
+  </section>
+
+  <section class="log">
+    <h3>Play-by-play</h3>
+    <ul id="event-log"></ul>
+  </section>
+
+  <script src="/static/dashboard.js"></script>
+</body>
+</html>
