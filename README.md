@@ -6,6 +6,7 @@ as an NBA game unfolds, and streams it to a real-time dashboard.
 **Tech stack:** `nba_api` (play-by-play logs) → `pandas` (feature pipeline)
 → `PyTorch` (neural network) → `Flask` (serving) → `WebSocket` (real-time
 push to the dashboard).
+
 <img width="794" height="853" alt="image" src="https://github.com/user-attachments/assets/f0e2ce1c-b173-481a-b009-8f10c4276e6d" />
 
 ## How it works
